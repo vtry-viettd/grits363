@@ -1,0 +1,143 @@
+@media only screen and (max-width: 768px) {
+    .home_page {
+        .key {
+            height: calc(100vh - 60px);
+            max-height: 156vw;
+            min-height: 320px;
+font-size: 8.75px;
+            .key_text {
+
+
+                .item {
+                    padding: 10px;
+                    height: calc(100vh - 60px);
+                    max-height: 156vw;
+                    min-height: 320px;
+                }
+            }
+            .s1 {
+				background-image: url(../images/idx_mv01_sp.jpg);
+			}
+
+			.slick-initialized .s2 {
+			//	background-image: url(../images/idx_mv02_sp.jpg);
+			}
+
+			.slick-initialized .s3 {
+			//	background-image: url(../images/idx_mv03_sp.jpg);
+			}
+
+		
+          
+        }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .home_page .key {
+     font-size: 1.8vmin;
+    }
+}
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .home_page .key {
+        font-size: 1.8vmin;
+    }
+}
+
+// End Index Key Visual
+@media only screen and (max-width: 768px) {
+    .home_page {
+        h3 {
+            margin-bottom: 30px;
+            font-size: calc(var(--ttl_size) - 2px);
+        }
+    }
+}
+
+
+
+// End Index General
+
+
+@media only screen and (max-width: 375px) {}
+
+@media only screen and (max-width: 768px) {
+    .index0 {
+        padding: 60px 0px 60px;
+        background-color: #000;
+        // background-image: url(../images/idx0_bg.jpg);
+    }
+
+    
+
+    .index07 {
+
+        padding: 60px 0px 55px;
+
+        .content {
+            flex-direction: column;
+            align-items: center;
+
+            .box {
+                margin-bottom: 5px;
+                width: 100%;
+                padding: 40px 5%;
+                max-width: 680px;
+
+            }
+
+            .btn-group {
+                max-width: 150px;
+                width: 44%;
+            }
+
+            li {
+                max-width: 100%;
+
+                a {
+                    padding: 20px 0;
+
+                    .date {
+                        width: 7em;
+                    }
+
+                    .title {
+                        width: calc(100% - 7em);
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 639px) {
+
+}
+@media only screen and (max-width: 425px) {
+
+}
+@media only screen and (max-width: 375px) {
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    .idx_gallery {
+    
+
+        ul {
+            li {
+                .img {
+                    width: 225px;
+                    height: 500px;
+                    background-size: 100% auto;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,203 @@
+/*
+----------------------------------------------------------------------
+
+VIETRY CO., LTD.
+Lastest update 10/03/2020.
+
+----------------------------------------------------------------------
+*/
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	font-size: 16px;
+}
+.inner {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.key {
+	padding: 70px 0 20px;
+}
+h2 {
+	font-size: 3rem;
+	font-weight: bold;
+}
+p {
+	margin: 0;
+}
+input[type*="checkbox"] {
+    background-color: initial;
+    cursor: default;
+    -webkit-appearance: checkbox;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+input:not([type*="checkbox"]):not([type*="radio"]), textarea {
+    transition: all 0.2s ease-in-out;
+}
+input:not([type*="checkbox"]):not([type*="radio"]) {
+	border: 1px solid #ddd;
+	padding: 4px 8px;
+	border-radius: 5px;
+	font-size: 1rem;
+}
+input[type*="text"]::placeholder {
+	color: #bababa;
+}
+textarea {
+    width: 100%;
+	border: 1px solid #ddd;
+	padding: 30px;
+	border-radius: 5px;
+	font-size: 1rem;
+}
+input:not([type*="checkbox"]):not([type*="radio"]):focus, textarea:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.radio-group,
+.checkbox-group {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+.radio-group > label,
+.checkbox-group > label {
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+.radio-group > label {
+	width: 100%;
+}
+.checkbox-group > label {
+	width: 49%;
+}
+.radio-group .radio-bg,
+.checkbox-group .checkbox-bg {
+	background-color: #e9ecef;
+	border-right: 1px solid #ced4da;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+}
+.radio-group input[type*="radio"],
+.checkbox-group input[type*="checkbox"] {
+	background-color: rgba(226, 226, 226, 0.28);
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: .275rem .875rem;
+
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	letter-spacing: .05em;
+	text-align: center;
+	white-space: nowrap;
+}
+.radio-group input[type*="text"],
+.checkbox-group input[type*="text"] {
+	border: 0px;
+	border-top: 1px solid #ced4da;
+	border-radius: 0;
+	padding: 5px 20px;
+	font-size: 0.8rem;
+	width: 100%;
+}
+.radio-group .title,
+.checkbox-group .title {
+	width: calc(100% - 30px);
+	padding: 0.25rem 1.5rem;
+}
+.OutputField {
+	background-color: #e7e7e7;
+	resize: none;
+}
+.btn-group {
+	margin: 30px auto;
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 700px;
+}
+.btn-group .button:nth-child(n + 2) {
+}
+.button {
+	border: 1px solid transparent;
+	border-color: transparent;
+	border-radius: .25rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+    width: 48%;
+}
+.button.color01 {
+	background-color: #343a40;
+}
+.button.color02 {
+	background-color: #ca4552;
+}
+.button a {
+	padding: .375rem .75rem;
+	display: block;
+	text-decoration: none;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	user-select: none;
+	color: #fff;
+	font-size: 1rem;
+	letter-spacing: 0.05em;
+	line-height: 1.5;
+	text-align: center;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.button.color01 a:hover {
+	box-shadow: 0 0 0 0.2rem rgba(52,58,64,.5);
+}
+.button.color02 a:hover {
+	box-shadow: 0 0 0 0.2rem rgba(202,69,82,.5);
+}

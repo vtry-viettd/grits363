@@ -1,0 +1,88 @@
+<!Doctype html>
+<html amp lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=-100%, user-scalable=yes" />
+<meta name="format-detection" content="telephone=no">
+<title>Magic Hat</title>
+<meta name="keywords" content="テキストテキスト" />
+<meta name="description" content="テキストテキスト" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style_sp.css" />
+<style>
+	.hat {
+		position: relative;
+		margin: 100px auto 0;
+		width: 300px;
+		height: 300px;
+		border: 2px solid #000;
+		border-radius: 50%;
+	}
+	.hat > div {
+	}
+	.hat > div {
+		position: absolute;
+		top: calc(50% - 150px);
+		left: calc(50% - 75px);
+		width: 150px;
+		height: 150px;
+		text-align: center;
+		transform-origin: 50% 100%;
+	}
+	.hat > div > p {
+	    transform: translate(-50%, -50%) rotate(90deg);
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    width: 100%;
+	    margin: 0;
+	}
+	.hat > div::before {
+		content: "";
+		background-color: #000;
+		position: absolute;
+		left: calc(50% - 1px);
+		bottom: 0;
+		width: 2px;
+		height: 100%;
+		transform: rotate(calc(360deg / 3 / 2));
+		transform-origin: 50% 100%;
+	}
+</style>
+</head>
+
+<body class="under page-parent-child">
+<div class="wrapper">
+
+    <div class="key">
+    </div>
+	
+    <div id="mainContent">
+		
+		
+
+		<div class="inner">
+
+			<div class="hat">
+				<div style="transform:   rotate(0deg)"><p>Option 1</p></div>
+				<div style="transform: rotate(120deg)"><p>Option 2</p></div>
+				<div style="transform: rotate(240deg)"><p>Option 3</p></div>
+			</div>
+
+
+		</div>
+
+		
+    </div>
+	<!--End Main Content-->
+</div>
+<!-- End Wrapper -->
+	
+	
+<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+</body>
+</html>

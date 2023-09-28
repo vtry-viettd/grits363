@@ -1,0 +1,123 @@
+/*INTERVIEW PAGE*/
+@media only screen and (max-width: 768px) {
+    .under {
+        &.page-interview {
+            counter-reset: count;
+
+            .key {
+                height: 450px;
+
+                .key_text {
+                    padding: 10px 10px 5vh;
+
+               
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+
+                .catch {
+                    font-size: 8.75px;
+                    text-align: center;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    .idx_en,
+                    h2 {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    h2,
+                    p {
+                        text-align: center;
+                    }
+                }
+
+            }
+        }
+
+
+    }
+
+    .interview {
+        &_catch {
+            margin-top: 0;
+            margin-bottom: 50px;
+
+            p {
+                font-size: 20px;
+                line-height: 1.4;
+            }
+
+            &.fz20 {
+                margin-top: 40px;
+
+                p {
+                    font-size: 17px;
+                    line-height: 1.6;
+                }
+            }
+        }
+
+        &_sec {
+           
+
+        }
+
+        &_content,
+        &_img {
+            width: 100%;
+        }
+
+        &_content {
+            max-width: 590px;
+            margin: 0 auto;
+
+        }
+
+        &_img {
+            margin-bottom: 25px;
+
+            &:before {
+                left: 20px;
+                font-size: 70px;
+            }
+        }
+
+        &_box {
+            margin-bottom: 50px;
+
+            // &:last-child{margin-bottom: 0px;}
+            &.box_left {
+                .interview_content {
+                    margin-left: auto;
+                }
+            }
+
+            &.box_right {
+                .interview_content {
+                    margin-right: auto;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .under {
+        &.page-interview {
+            .key {
+                .catch {
+                    font-size: 1.5vw;
+                }
+                .name .en{
+                    font-size: 0.8em;
+                }
+
+            }
+        }
+
+
+    }
+}

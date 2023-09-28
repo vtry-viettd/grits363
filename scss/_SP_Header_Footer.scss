@@ -1,0 +1,350 @@
+@media only screen and (max-width: 768px) {
+	.wrapper {
+
+		min-width: inherit;
+	}
+
+
+
+
+	.header_top {
+		width: 100%;
+		align-items: center;
+		height: 60px;
+		padding: 0;
+
+
+
+
+		p {
+			margin-bottom: 0;
+		}
+
+		.logo {
+			max-width: calc(100% - 80px);
+			width: auto;
+			margin-left: 10px;
+
+			transform: none;
+
+			img {
+				max-height: 40px;
+			}
+		}
+
+
+	}
+
+
+	footer {
+		padding: 50px 0;
+		background-image: url(../images/ft_bg01.jpg), url(../images/ft_bg02.jpg);
+		background-size: 100% auto, auto 70%;
+		background-repeat: no-repeat;
+		background-position: top left, right bottom;
+	}
+
+	.ft_link {
+		font-size: 9px;
+
+		.menu01 {
+			width: 100%;
+
+			ul {
+				max-height: 55em;
+
+				li {
+					width: 50%;
+				}
+			}
+		}
+
+		.menu02 {
+			width: 100%;
+			margin-top: 50px;
+
+			ul {
+				max-height: 40em;
+
+				li {
+					width: 50%;
+				}
+			}
+		}
+
+		.ttl {
+			margin-bottom: 30px;
+		}
+	}
+
+	.menu_toggle .inside {
+		.ft_link {
+
+			.menu01,
+			.menu02 {
+				width: 100%;
+
+				ul {
+					max-height: 100%;
+
+					li {
+						width: 100%;
+						border-bottom: 1px dashed #dadada;
+						margin-bottom: 0 !important;
+
+						&:first-child {
+							border-top: 1px dashed #dadada;
+						}
+
+						a {
+							padding-top: 1em;
+							padding-bottom: 1em;
+
+							&::before {
+								top: 1.5em;
+							}
+
+						}
+
+						&.sty02 {
+							a {
+								&:before {
+									top: 1.4em;
+								}
+							}
+						}
+
+
+						&.sty03 {
+							a {
+								&:before {
+									top: 1.6em;
+								}
+							}
+						}
+					}
+				}
+
+
+			}
+		}
+
+	}
+
+	.copyright {
+		.flex {
+			flex-direction: column;
+		}
+
+		.grits {
+			padding-bottom: 10px;
+			border-bottom: 1px solid rgba($color: #fff, $alpha: 0.5);
+		}
+
+		.textwidget {
+			margin-top: 10px;
+			border-left: none;
+			font-size: 12px;
+		}
+	}
+
+
+
+
+
+	.fixed_banner {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		flex-wrap: wrap;
+		position: fixed;
+		top: auto;
+		bottom: 0;
+		left: 0;
+		right: auto;
+		width: 100%;
+		height: 50px;
+		transform: translateY(100%);
+		transition: transform 0.3s ease-in-out;
+
+		&.active {
+			transform: translateY(0%);
+		}
+
+		p {
+			font-weight: normal;
+
+			&::before {
+				margin-bottom: 5px;
+			}
+		}
+
+		.tel,
+		.web,
+		.mail {
+
+			p {
+
+				font-size: 13px;
+				line-height: 1;
+
+				&::before {
+					height: 22px;
+				}
+			}
+		}
+
+		.tel {
+			width: 40%;
+
+			p {
+				span {
+					writing-mode: lr-tb;
+				}
+			}
+		}
+
+		.web {
+			width: 30%;
+
+			p {}
+		}
+
+		.mail {
+			width: 30%;
+
+			p {}
+		}
+	}
+
+	.copyright {
+		display: block;
+		padding-top: 30px;
+		padding-bottom: 80px;
+
+		.flex {
+			justify-content: center;
+		}
+	}
+}
+
+@media only screen and (max-width: 640px) {
+
+	footer {
+		background-size: 100% auto, auto 30%;
+
+	}
+
+	.ft_link {
+
+		.menu01,
+		.menu02 {
+			width: 100%;
+
+			ul {
+				max-height: 100%;
+
+				li {
+					width: 100%;
+					border-bottom: 1px dashed #dadada;
+					margin-bottom: 0 !important;
+
+					&:first-child {
+						border-top: 1px dashed #dadada;
+					}
+
+					a {
+						padding-top: 1em;
+						padding-bottom: 1em;
+
+						&::before {
+							top: 1.5em;
+						}
+
+					}
+
+					&.sty02 {
+						a {
+							&:before {
+								top: 1.4em;
+							}
+						}
+					}
+
+
+					&.sty03 {
+						a {
+							&:before {
+								top: 1.6em;
+							}
+						}
+					}
+				}
+			}
+
+
+		}
+	}
+
+	.copyright {
+
+
+		.flex {
+			max-width: 400px;
+			margin: auto;
+		}
+
+
+		.grits {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+
+			img {
+				margin: auto;
+				max-width: 140px;
+			}
+		}
+
+		.textwidget {
+			margin-top: 10px;
+			border: none;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 0px 10px;
+			text-align: center;
+
+			span {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 375px) {
+
+	footer .ft_link,
+	.ft_link {
+
+		.menu01,
+		.menu02 {
+			li {
+				a {
+					font-size: 13px;
+				}
+
+				&.sty03 {
+					a {
+						padding-left: 3.2em;
+
+						&:before {}
+					}
+				}
+			}
+		}
+	}
+
+
+}

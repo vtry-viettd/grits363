@@ -1,0 +1,211 @@
+<!Doctype html>
+<html amp lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=-100%, user-scalable=yes" />
+<meta name="format-detection" content="telephone=no">
+<title>テキストテキストテキストテキスト</title>
+<meta name="keywords" content="テキストテキスト" />
+<meta name="description" content="テキストテキスト" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/style_sp.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<!-- Google Analytics start -->
+<!-- Google Analytics end -->
+<style>
+	#mainContent {
+		min-height: 10000px;
+	}
+	.inner {
+		padding: 0;
+	}
+	.spaceTOP {
+		padding-top: 100vw;
+	}
+	.test {
+		background-color: #000;
+		color: #fff;
+		margin-bottom: 100px;
+		height: 100px;
+		width: 30%;
+	}
+	.test01 {
+		background-color: #000;
+		margin-left: auto;
+	}
+	.test02 {
+		background-color: #222;
+	}
+	.test03 {
+		background-color: #444;
+		margin-left: auto;
+	}
+	.test04 {
+		background-color: #666;
+	}
+</style>
+</head>
+
+<body class="under page-parent-child" data-aos-easing="ease-out-back" data-aos-duration="1000" data-aos-delay="0">
+<div class="wrapper">
+	
+    <div id="mainContent">
+		
+
+		<div class="inner">
+			<div class="spaceTOP"></div>
+
+			<div class="test test01 animatedScroll animate__animated animate__fadeInUp" data-as-offset='100' data-as-duration='1s' data-as-delay='0.3s'><p>11111111111</p></div>
+			<div class="test test02 animatedScroll animate__animated animate__fadeInUp"><p>22222222222</p></div>
+			<div class="test test03 animatedScroll" data-as-offset='100' data-aos="zoom-out-right"><p>3333333333</p></div>
+			<div class="test test04 animatedScroll" data-as-offset='000' data-aos="flip-left"><p>4444444444</p></div>
+
+
+		</div>
+
+		
+    </div>
+	<!--End Main Content-->
+</div>
+<!-- End Wrapper -->
+	
+	
+<script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+<script>
+$(function(){
+	gritsOnScroll('.animatedScroll', 'aos-animate');
+})
+function gritsOnScroll(target, className, offset, duration, delay) {
+	try { /*adddlert("abcdxyz");*/ }
+	catch(err) { alert(err); }
+
+	offset = offset ? offset : 0;
+	duration = duration ? duration : null;
+	delay = delay ? delay : null;
+
+	var target = $(target);
+	var myArray = [];
+	var myObj = {};
+
+	function constructArray(ele, a, o) {
+    	let id = 0;
+		$.each(ele, function(i){
+    		a.push(
+		    	o = {
+		    		Id : id,
+		    		offset : '',
+		    		duration : '', 
+		    		delay : '',
+		    		pTop : '',
+		    		pBottom : '',
+		    		animation : {
+		    			type : '',
+		    			name : '',
+		    		},
+		    	}
+    		);
+    		id++;
+		});
+		return a;
+	}
+	myArray = constructArray(target, myArray, myObj);
+
+	// Get animation name
+	function getAnimation() {
+		target.each(function(i, ele) {
+		    let name = ($(ele).css('animation-name') != 'none') ? $(ele).css('animation-name') : null;
+		    let type = name ? 'animation' : 'transform';
+
+			Object.assign(myArray[i].animation, { type : type, name : name }); // ECMAScript 6 way
+		});
+		for ( i in myArray ) {
+			if ( myArray[i].animation.type === 'animation' ) target.eq(i).css({'animation-name' : 'none'});
+		}
+	}
+    // Get inline value
+	function getInlineValue() {
+		$.each(target, function(i){
+	    	let thisOffset = ($(this).data('as-offset') !== undefined) ? $(this).data('as-offset') : offset;
+	    	let thisDuration = ($(this).data('as-duration') !== undefined) ? $(this).data('as-duration') : duration;
+	    	let thisDelay = ($(this).data('as-delay') !== undefined) ? $(this).data('as-delay') : duration;
+
+		    let update = {
+	    		offset : thisOffset,
+	    		duration : thisDuration, 
+	    		delay : thisDelay,
+		    };
+		    myArray[i] = {...myArray[i],...update} // ECMAScript 7 way
+		});
+	}
+	// Get target's coordinate
+	function getPos() {
+		$.each(target, function(i, val){
+			// Get top position of target
+			let thisTargetTop = target.eq(i).offset().top;
+			// Get bottom position of target
+			let thisTargetBtt = target.eq(i).offset().top + target.eq(i).outerHeight();
+
+		    myArray[i] = {...myArray[i],...{ pTop : thisTargetTop, pBottom : thisTargetBtt }} // ECMAScript 7 way
+		});
+	}
+
+	var vp = $(window);
+	var vpHeight;
+	function getViewportSize() {
+		vpHeight = vp.height();
+	}
+
+
+
+	getViewportSize();
+	getAnimation();
+	getInlineValue();
+	getPos();
+	$(window).on('resize', function(){
+		getViewportSize();
+		getPos();
+	});
+
+	var y, endPoint;
+	$.each(target, function(i){
+		if ( myArray[i].animation.type == 'animation' ) target.eq(i).css({'visibility' : 'hidden', 'animation-name' : 'none'});
+		$(window).on('scroll', function(){
+			y = $(this).scrollTop();
+			endPoint = y + vpHeight;
+
+			if ( !(target.eq(i).hasClass(className)) ) {
+				switch(true) {
+					case ( y < myArray[i].pTop && endPoint >= myArray[i].pTop ): // approach from the top of element
+						if ( (endPoint - myArray[i].pTop) >= myArray[i].offset ) { // offset
+							if ( myArray[i].animation.type == 'animation' ) target.eq(i).css({'visibility' : 'visible', 'animation-name' : myArray[i].animation.name}); // animation
+							target.eq(i).addClass(className);
+							target.eq(i).find('p').text("approach from top: " + myArray[i].pTop + ", offset: " + myArray[i].offset);
+						}
+						break;
+					case (  y <= myArray[i].pBottom && endPoint > myArray[i].pBottom ): // approach from the bottom of element
+						if ( myArray[i].animation.type == 'animation' ) target.eq(i).css({'visibility' : 'visible', 'animation-name' : myArray[i].animation.name}); // animation
+						target.eq(i).addClass(className);
+						target.eq(i).find('p').text("approach from bottom: " + myArray[i].pBottom);
+						break;
+					default:
+						break;
+				}
+			}
+			else {
+				if ( (endPoint - myArray[i].pTop) <= myArray[i].offset) { // stay away from the top of element && offset
+					if ( myArray[i].animation.type == 'transform' ) { // transform only
+						target.eq(i).removeClass(className);
+						target.eq(i).find('p').text("stay away from top");
+					}
+				}
+			}
+		});
+	});
+}
+
+</script>
+</body>
+</html>

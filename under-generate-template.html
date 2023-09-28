@@ -1,0 +1,549 @@
+<!Doctype html>
+<html amp lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=-100%, user-scalable=yes" />
+<meta name="format-detection" content="telephone=no">
+<title>テキストテキストテキストテキスト</title>
+<meta name="keywords" content="テキストテキスト" />
+<meta name="description" content="テキストテキスト" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="css/slick.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style_sp.css" />
+<!-- Google Analytics start -->
+<!-- Google Analytics end -->
+
+
+<style>
+	.generateCodeBtnGroup {
+		border-bottom: 1px solid rgba(85, 85, 85, 0.3);
+		display: block;
+		padding-top: 30px;
+		padding-bottom: 60px;
+	}
+	.generateCodeBtnGroup a {
+	    -webkit-transition: all 0.3s ease;
+	    -o-transition: all 0.3s ease;
+	    transition: all 0.3s ease;
+		display: block;
+	    border: 1px solid #939393;
+	    padding: 5px 10px;
+	    border-radius: 15px;
+		max-width: 400px;
+		margin: 0 auto;
+
+	    color: #333;
+	    text-align: center;
+	}
+	.generateCodeBtnGroup a:hover {
+		background-color: #333;
+	    opacity: 1;
+	    color: #fff;
+	}
+
+	.showcode {
+		display: none;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    z-index: 100;
+	}
+	.showcode .source {
+		background-color: rgba(208, 208, 208, 0.7);
+	    width: 100%;
+	    height: 100%;
+	    
+	}
+	.showcode .source .inner {
+	    position: relative;
+	    height: 100%;
+	}
+	.showcode .source pre, .showcode .source code, .showcode .source textarea {
+	    background-color: #333;
+	    border: 1px solid #ddd;
+	    transition: border-color 0.2s ease-in-out, outline 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+		width: 100%;
+		min-height: 60vh;
+		max-height: 85vh;
+		overflow: auto;
+	    padding: 30px;
+	    border-radius: 5px;
+	    position: relative;
+	    z-index: 2;
+
+	    white-space: pre-wrap;
+	    font-size: 0.8rem;
+	    color: #fff;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	}
+	.showcode .source pre:focus, .showcode .source code:focus, .showcode .source textarea:focus {
+	    border-color: #80bdff;
+	    outline: 0;
+	    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	}
+	.showcode .close {
+		position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    z-index: 1;
+    }
+</style>
+
+</head>
+
+<body class="under page-parent-child">
+<div class="wrapper">
+    <header>
+		<div class="header_top">
+		</div>
+    </header>
+
+    <div class="key">
+        <div class="inner">
+			<div class="key_text">
+				<h2>h2h2h2h2h2h2h2h2h2h2</h2>
+			</div>
+        </div>
+    </div>
+
+    <div id="mainContent">
+		
+
+		<div class="topic_path">
+			<div class="inner">
+				<ul>
+					<li class="home"><a href="#">HOME</a><span>&gt;</span></li>
+					<li>h2h2h2h2h2</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="inner">
+
+
+			<section>
+				<div class="anchor-links">
+					<div class="btn"><a href="#">SECTION 01</a></div>
+					<div class="btn"><a href="#">SECTION 02</a></div>
+					<div class="btn"><a href="#">SECTION 03</a></div>
+					<div class="btn"><a href="#">SECTION 04</a></div>
+					<div class="btn"><a href="#">SECTION 05</a></div>
+					<div class="btn ext"><a href="#">SECTION 06</a></div>
+					<div class="btn ext"><a href="#">SECTION 07</a></div>
+				</div>
+			</section>
+			
+			<section>
+				<h3>h3h3h3h3h3</h3>
+				<p class="mb0">ppppppppppppp</p>
+
+				<div class="section secH4">
+					<h4>h4h4h4h4h4</h4>
+					<p>ppppppppppppp</p>
+					<p class="mb0">ppppppppppppp</p>
+				</div>
+			</section>
+			
+			
+			<section>
+				<h3>h3h3h3h3h3</h3>
+				<p class="mb0">ppppppppppppp</p>
+
+				<div class="section secH4">
+					<h4>h4h4h4h4</h4>
+					<p>ppppppppppppp</p>
+					<p class="mb0">ppppppppppppp</p>
+					<div class="section secH5">
+						<h5>h5h5h5h5</h5>
+						<p>ppppppppppppp</p>
+						<ul class="list01 mcol-2">
+							<li>abcdefghiklmneugh</li>
+							<li>abcdefghiklmneugh</li>
+							<li>abcdefghiklmneugh</li>
+							<li>abcdefghiklmneugh</li>
+						</ul>
+						<p class="list_note no_mt">など</p>
+						<p class="mb0">ppppppppppppp</p>
+					</div>
+					<div class="section secH5">
+						<h5>h5h5h5h5</h5>
+						<p>ppppppppppppp</p>
+						<div class="box_h6">
+							<h6>texttexttexttexttexttext</h6>
+							<p class="mb0">ppppppppppppp</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			
+			<section>
+				<h3>h3h3h3h3h3</h3>
+				<table class="tbl_style01 colHead resTable clinic_tbl01">
+					<tr>
+						<th>医院名</th>
+						<td>xxxxxxxxxxxxx</td>
+					</tr>
+					<tr>
+						<th>院長</th>
+						<td>xxxxxxxxxxxxx</td>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td>xxxxxxxxxxxxx</td>
+					</tr>
+					<tr>
+						<th>TEL</th>
+						<td>xxxxxxxxxxxxx</td>
+					</tr>
+					<tr>
+						<th>駐車場</th>
+						<td>xxxxxxxxxxxxx</td>
+					</tr>
+				</table>
+				<p class="mt20">aaaaaaaaaaaaaaaaa</p>
+			</section>
+			
+			
+			<section>
+				<h3>h3h3h3h3h3</h3>
+				<div class="ovs mb10">
+					<table class="tbl_style01 rowHead rollTable clinic_tbl02">
+					      <tr>
+					         <th>診療時間</th>
+					         <th>月</th>
+					         <th>火</th>
+					         <th>水</th>
+					         <th>木</th>
+					         <th>金</th>
+					         <th>土</th>
+					         <th>日・祝</th>
+					      </tr>
+					      <tr>
+					         <td>xx:xx～xx:xx</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>／</td>
+					      </tr>
+					      <tr>
+					         <td>xx:xx～xx:xx</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>○</td>
+					         <td>／</td>
+					      </tr>
+					</table>
+				</div>
+				<p class="tbl_note">※表は左右にスクロールして確認することができます。</p>
+			</section>
+			
+			
+			<section>
+				<h3>h3h3h3h3h3</h3>
+				<div class="ovs mb10">
+					<table class="tbl_style02 colHead rollTable">
+						<tr>
+					      	<th>ooooooo</th>
+							<td>xxxxxxxx</td>
+							<td>xxxxxxxx</td>
+							<td>xxxxxxxx</td>
+					    </tr>
+						<tr>
+					      	<th>ooooooo</th>
+							<td>xxxxxxxx</td>
+							<td>xxxxxxxx</td>
+							<td>xxxxxxxx</td>
+					    </tr>
+						<tr>
+					      	<th>ooooooo</th>
+							<td>xxxxxxxx</td>
+							<td>xxxxxxxx</td>
+							<td>xxxxxxxx</td>
+					    </tr>
+					</table>
+				</div>
+				<p class="tbl_note">※表は左右にスクロールして確認することができます。</p>
+			</section>
+			
+			
+			<section>
+				<h3>h3h3h3h3h3</h3>
+				<div class="doctor_box">
+					<figure class="img"><img src="images/doctor.jpg" alt="doctor"></figure>
+					<div class="text">
+						<p class="ttl">XX OO（OOOO XXXX）</p>
+					</div>
+				</div>
+			</section>
+
+			
+			<section>
+				<div class="fullWidthBreak pt80 pb80">
+					<div style="background-color: #dedede; padding: 170px 0;">
+						<div class="inner">
+							<h4>Break out of Inner</h4>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			
+			<div class="section secH4">
+				<h4>ImageRight</h4>
+				<div class="imgBox rowImg clearfix">
+					<figure class="image_r"><img src="dummy/dummy_600x400.jpg" alt="dummy"></figure>
+					<div class="txt_l">
+						<p>Curabitur quis tellus a ex fermentum dapibus. Cras id pulvinar sem, in pellentesque justo. Nam eu aliquam tellus. Maecenas varius non turpis nec suscipit. Sed vitae felis ac erat rhoncus fermentum. </p>
+			
+					</div>
+					</div>
+			</div>
+
+			
+			<div class="section secH4">
+				<h4>ImageLeft</h4>
+				<div class="imgBox rowImg clearfix">
+					<figure class="image_l"><img src="dummy/dummy_600x400.jpg" alt="dummy"></figure>
+					<p>Curabitur quis tellus a ex fermentum dapibus. Cras id pulvinar sem, in pellentesque justo. Nam eu aliquam tellus. Maecenas varius non turpis nec suscipit. Sed vitae felis ac erat rhoncus fermentum. </p>
+				</div>
+			</div>
+
+			
+			<div class="section secH4">
+			    <h4>ImageLarge</h4>
+			    <div class="imgBox rowImg large clearfix">
+			        <figure class="image_r"><img src="dummy/dummy_600x400.jpg" alt="dummy"></figure>
+			        <div class="txt_l">
+			            <p>Curabitur quis tellus a ex fermentum dapibus. Cras id pulvinar sem, in pellentesque justo. Nam eu aliquam tellus. Maecenas varius non turpis nec suscipit. Sed vitae felis ac erat rhoncus fermentum. </p>
+			        </div>
+			    </div>
+			</div>
+
+			
+			<div class="section secH4">
+				<h4>ImageFullsize</h4>
+				<div class="imgBox rowImg full clearfix">
+					<figure class="image_l"><img src="dummy/dummy_600x400.jpg" alt="dummy"></figure>
+					<p>Curabitur quis tellus a ex fermentum dapibus. Cras id pulvinar sem, in pellentesque justo. Nam eu aliquam tellus. Maecenas varius non turpis nec suscipit. Sed vitae felis ac erat rhoncus fermentum. </p>
+				</div>
+			</div>
+
+
+			<div class="section secH4">
+				<h4>h4h4h4h4h4</h4>
+				<div class="imgBox colImg colImg1">
+					<div class="list">
+						<div class="item">
+							<figure><img src="dummy/dummy_1170x400.jpg" alt="dummy"></figure>
+							<div class="text">
+								<p class="ttl">Venenatis</p>
+								<p>Curabitur quis tellus a ex fermentum dapibus. Cras id pulvinar sem, in pellentesque justo. Nam eu aliquam tellus. Maecenas varius non turpis nec suscipit. Sed vitae felis ac erat rhoncus fermentum. </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="section secH4">
+				<h4>h4h4h4h4h4</h4>
+				<div class="imgBox colImg colImg2">
+					<div class="list">
+						<div class="item">
+							<figure><img src="dummy/dummy_750x400.jpg" alt="dummy"></figure>
+							<div class="text">
+								<p class="ttl">Venenatis</p>
+								<p>Curabitur quis tellus a ex fermentum dapibus. Cras id pulvinar sem, in pellentesque justo. Nam eu aliquam tellus. Maecenas varius non turpis nec suscipit. Sed vitae felis ac erat rhoncus fermentum. </p>
+							</div>
+						</div>
+						<div class="item">
+							<figure><img src="dummy/dummy_750x400.jpg" alt="dummy"></figure>
+							<div class="text">
+								<p class="ttl">Venenatis</p>
+								<p>Nullam vehicula ex ac libero efficitur dapibus. Integer lorem leo, maximus a feugiat non, bibendum vel est. Donec non purus quis augue elementum porttitor. Integer dapibus ante eget justo commodo aliquet. </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="section secH4">
+				<h4>h4h4h4h4h4</h4>
+				<div class="imgBox colImg colImg3">
+					<div class="list">
+						<div class="item">
+							<figure><img src="dummy/dummy_600x400.jpg" alt="dummy"></figure>
+							<div class="text">
+								<p class="ttl">Venenatis</p>
+								<p>Curabitur quis tellus a ex fermentum dapibus. Cras id pulvinar sem, in pellentesque justo. Nam eu aliquam tellus. Maecenas varius non turpis nec suscipit. Sed vitae felis ac erat rhoncus fermentum. </p>
+							</div>
+						</div>
+						<div class="item">
+							<figure><img src="dummy/dummy_600x400.jpg" alt="dummy"></figure>
+							<div class="text">
+								<p class="ttl">Venenatis</p>
+								<p>Nullam vehicula ex ac libero efficitur dapibus. Integer lorem leo, maximus a feugiat non, bibendum vel est. Donec non purus quis augue elementum porttitor. Integer dapibus ante eget justo commodo aliquet. </p>
+							</div>
+						</div>
+						<div class="item">
+							<figure><img src="dummy/dummy_600x400.jpg" alt="dummy"></figure>
+							<div class="text">
+								<p class="ttl">Venenatis</p>
+								<p>Integer dapibus ante eget justo commodo aliquet. Sed vitae lorem vitae purus elementum laoreet. Nullam ut sem a sapien rutrum pulvinar vitae in neque.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<section>
+				<div class="access_box_img01 pt40">
+					<div class="block">
+						<div class="big">
+							<figure><img src="dummy/dummy_580x410.jpg" alt="ooooooooo"></figure>
+						</div>
+						<div class="small">
+							<figure><img src="dummy/dummy_285x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_285x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_285x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_285x200.jpg" alt="ooooooooo"></figure>
+						</div>
+					</div>
+					<div class="block">
+						<div class="big">
+							<figure><img src="dummy/dummy_580x410.jpg" alt="ooooooooo"></figure>
+						</div>
+						<div class="small">
+							<figure><img src="dummy/dummy_285x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_285x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_285x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_285x200.jpg" alt="ooooooooo"></figure>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section>
+				<div class="access_box_img02 pt40">
+					<div class="block">
+						<div class="big">
+							<figure><img src="dummy/dummy_640x410.jpg" alt="ooooooooo"></figure>
+						</div>
+						<div class="small">
+							<figure><img src="dummy/dummy_255x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_255x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_255x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_255x200.jpg" alt="ooooooooo"></figure>
+						</div>
+					</div>
+					<div class="block">
+						<div class="big">
+							<figure><img src="dummy/dummy_640x410.jpg" alt="ooooooooo"></figure>
+						</div>
+						<div class="small">
+							<figure><img src="dummy/dummy_255x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_255x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_255x200.jpg" alt="ooooooooo"></figure>
+							<figure><img src="dummy/dummy_255x200.jpg" alt="ooooooooo"></figure>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+		</div>
+
+
+    </div>
+	<!--End Main Content-->
+	
+	
+	<div class="totop"><div class="icon animated"></div></div>
+    <footer>
+    </footer>
+    <div class="fixed_banner">
+		<div class="tel"><a href="tel:0000000000000" class="tel_click"></a><p><i>XX<span>-</span></i><i>XXXX<span>-</span></i>XXXX</p></div>
+		<div class="web"><a href="#" target="_blank"></a><p>WEB<br class="pc_only">予約</p></div>
+		<div class="mail"><a href="#" target="_blank"></a><p>お問い<br class="pc_only">合わせ</p></div>
+	</div>
+</div>
+<!-- End Wrapper -->
+	
+	
+<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+<script defer type="text/javascript" src="js/slick.min.js"></script>
+<script defer type="text/javascript" src="js/grits.scroll.js"></script>
+<script defer type="text/javascript" src="js/grits.common.js"></script>
+
+
+
+
+<script type="text/javascript">
+$(function(){
+	var htmlPopup = '<div class="showcode">'+
+							'<div class="close"></div>'+
+							'<div class="source">'+
+								'<div class="inner"><textarea spellcheck="false" readonly></textarea></div>'+
+							'</div>'+
+					'</div>';
+
+	var htmlBtn =	'<div class="generateCodeBtnGroup">'+
+						'<a href="" class="btn">Click To Get The Code Above &#x2934;</a>'+
+					'</div>';
+	$('body').prepend(htmlPopup);
+	$('#mainContent > .inner').children('section, .section').each(function(i, val){
+		$(this).after(htmlBtn);
+	});
+
+
+	function open(html) {
+		$('.showcode').find('.source textarea').text(html);
+		$('.showcode').fadeIn();
+		$('.wrapper').css({'filter' : 'blur(8px)'});
+	}
+	function close() {
+		$('.showcode').find('.source textarea').text('');
+		$('.showcode').fadeOut();
+		$('.wrapper').css({'filter' : 'none'});
+	}
+
+	$('.generateCodeBtnGroup .btn').on('click', function(e){
+		e.preventDefault();
+		var source = $(this).parent().prev().prop('outerHTML');
+		open('\n			'+source);
+	});
+	$(document).keyup(function(e) {
+	     if (e.key === "Escape") {
+     		close();
+	    }
+	});
+	$('.showcode .close').on('click', function(){
+     		close();
+	});
+})
+</script>
+</body>
+</html>

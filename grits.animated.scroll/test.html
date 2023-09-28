@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style type="text/css">
+	@keyframes fadeInUp {
+	    from {
+	        opacity: 0;
+	        -webkit-transform: translate3d(0, 100%, 0);
+	        transform: translate3d(0, 100%, 0);
+	    }
+
+	    to {
+	        opacity: 1;
+	        -webkit-transform: translate3d(0, 0, 0);
+	        transform: translate3d(0, 0, 0);
+	    }
+	}
+
+	.animate__fadeInUp {
+	    -webkit-animation-name: fadeInUp;
+	    animation-name: fadeInUp;
+	}
+	.animate__animated {
+		animation-duration: 1s;
+	    animation-fill-mode: both;
+	}
+	.space {
+		background-color: #fff;
+		height: 200px;
+	}
+	div {
+	    background-color: #000;
+	    color: #fff;
+	    height: 100px;
+	    margin: 0 0 100px 0;
+	}
+</style>
+</head>
+<body>
+<div class="space"></div>
+<div class="animatedScroll"><p>111</p></div>
+<div class="animatedScroll animate__animated animate__fadeInUp"><p>222</p></div>
+<div class="animatedScroll animate__animated animate__fadeInUp"><p>333</p></div>
+<button> report again </button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var as = $('.animatedScroll');
+
+		myArray = [];
+		as.each(function(i, ele) {
+			/*$(this).css({'animation-delay' : '.3s'});
+		    $(ele).on('animationstart', function(e) { // If the element has an animation and it's start running
+		        this.dataset.hasAnimation = true;
+		        this.dataset.name = e.originalEvent.animationName;
+		        // this.dataset.name = $(this).css('animation-name');
+		        // animationReport(as); // report after animation
+				$(this).css({'animation-delay' : ''});
+				if ( $(this).attr('style') == '' ) $(this).removeAttr('style');
+		    });*/
+		    let name = ($(this).css('animation-name') != 'none') ? $(this).css('animation-name') : null;
+		    $(this).data('name', name || 'no');
+		});
+
+		function pushArray(sel) {
+			sel.each(function(i, ele){
+		    	myArray.push($(this).data('name'));
+			})
+	    	console.log(myArray);
+		}
+
+
+		function animationReport(sel) { // reports the most recent animation for each
+		    sel.each(function(i, ele) { // DOM element found in the given jQuery object sel
+		        console.log(ele.textContent + ' has ' + (ele.dataset.name || 'no animation'))
+		    })
+		}
+		$('button').click(function() { pushArray(as) });
+	})
+</script>
+</body>
+</html>

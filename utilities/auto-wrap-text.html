@@ -1,0 +1,127 @@
+<!Doctype html>
+<html amp lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=-100%, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no">
+    <title>Auto wrap &lt;Paragraph&gt;</title>
+    <meta name="keywords" content="テキストテキスト" />
+    <meta name="description" content="テキストテキスト" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body class="under page-under">
+    <div class="wrapper">
+        <header>
+            <div class="header_top"></div>
+        </header>
+        <div id="main">
+            <div class="key">
+                <div class="inner">
+                    <div class="key_text">
+                        <h2>Auto &lt;Paragraph&gt;</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="content">
+                <div class="pt50"></div>
+                <section>
+                    <div class="inner">
+				
+                    	<div class="radio-group" id="wrap-all-child">
+							<label>
+							    <div class="radio-bg"><input type="radio" name="wrap-all-child" id="wrap-paragraph" value="wrap-paragraph" checked="checked" /></div>
+						    	<p class="title">Wrap Paragraph.</p>
+							</label>
+						</div>
+                        <textarea name="InsertField" id="InputField" cols="30" rows="10" class="InputField"></textarea>
+                        <div class="btn-group">
+	                        <div class="button color01"><a href="#" id="doit">Just Do It (๑˃̵ᴗ˂̵)و </a></div>
+	                        <div class="button color02"><a href="#" id="clear">Clear (⌣_⌣”) </a></div>
+                        </div>
+                        <textarea name="InsertField" id="OutputField" cols="30" rows="10" class="OutputField" readonly></textarea>
+
+                    </div>
+                </section>
+                <div class="pt100"></div>
+            </div>
+            <!--End Content-->
+
+
+        </div>
+        <!--End Main-->
+        <div class="totop"><div class="icon animated"></div></div>
+        <footer>
+        </footer>
+    </div>
+    <!-- End Wrapper -->
+	<script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#doit').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var text = $('#InputField').val();
+            var eachLine = text.split('\n');
+            var addBefore = '';
+            var addAfter = '';
+            var output = '';
+            console.log('Total line: ' + eachLine.length);
+
+            // Set wrap-each-child
+            if ( $('#wrap-paragraph').is(":checked") ) {
+            	addAfter += '<br>';
+            }
+
+            for (var i = 0, l = eachLine.length; i < l; i++) {
+            	eachLine[i] = $.trim(eachLine[i]);
+                switch (true) {
+                    case (eachLine[i].indexOf('・') > -1):
+                    	if ( eachLine[i].slice(0,1) == '・' ) {
+                    		eachLine[i] = eachLine[i].replace('・', '');
+                    	}
+                        output += addBefore + eachLine[i] + addAfter +'';
+                        break;
+                    default:
+                        output += addBefore + eachLine[i] + addAfter + '';
+                        break;
+                }
+            }
+
+			output = output.replace(
+				/[\uff01-\uff5e]/g,
+				function(ch) { return String.fromCharCode(ch.charCodeAt(0) - 0xfee0); }
+			); // convert half-width and full-width to latin
+
+            output = '<p>' + output + '</p>';
+
+            output = output.replace(/<br><br>/gm, '</p>\n<p>');
+            output = output.replace(/<p><br>/gm, '<p>');
+            output = output.replace(/<br><\/p>/gm, '</p>');
+            output = output.replace(/<p><\/p>/gm, '');
+
+			var pos = output.lastIndexOf('<p>');
+			output = output.substring(0,pos) + '<p class="mb0">' + output.substring(pos+3);
+
+            console.log('result: \n'+output);
+            
+            $("#OutputField").val(output);
+        });
+        $('#clear').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        	$('input[type="checkbox"]').prop('checked', false);
+        	$('input[type="text"]').val('');
+        	$('textarea').val('');
+        });
+    });
+    </script>
+</body>
+
+</html>

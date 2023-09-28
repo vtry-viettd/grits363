@@ -1,0 +1,153 @@
+// Name - Internet Explorer
+// Desc - Media target only IE browser.
+@mixin before(){
+	content: "";
+	display: block;
+	position: absolute;
+	transition: all .3s;
+}
+@mixin calc($col, $space, $media){
+	width: calc((100% - #{($col - 1)*$space})/#{$col});
+	margin-right:#{$space};
+	margin-bottom:#{$space};
+	&:nth-child(#{$col}n+#{$col}) {
+		margin-right: 0px;
+	}
+}
+@mixin flex_box($col, $space, $media) {
+	
+    @if $media=='not' {
+        >.box {
+       @include calc($col, $space, $media);
+        }
+    }
+    @else {
+        @media only screen and (min-width:#{$media}) {
+            >.box {
+				@include calc($col, $space, $media);
+            }
+        }
+    }
+}
+@mixin stroke($color, $width: 1px) {
+	$width: $width + 0;
+	$shadow: 0 0 0 transparent;
+	$i: 0;
+	$w: 1;
+ 
+	@while ($i < $width) {
+	   $i: $i + 1;
+	   $j: 0;
+	   $w: $w + 2;
+ 
+	   @for $r from 1 through $w {
+		  @for $c from 1 through $w {
+			 $x: $c - ceil($w / 2);
+			 $y: $r - ceil($w / 2);
+ 
+			 $shadow: #{$shadow},
+			 #{$x}px #{$y}px 0 $color;
+		  }
+	   }
+	}
+ 
+	text-shadow: $shadow;
+ }
+
+
+
+// Name - Fire Fox
+// Desc - Media target only Fire Fox browser.
+@mixin FF() {
+	@-moz-document url-prefix() {
+		/* Fire Fox */
+		@content;
+	}
+}
+
+
+// Name - Google Chrome
+// Desc - Media target only Google Chrome browser.
+@mixin GC() {
+	@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+		/* Chrome 29+ */
+		@content;
+	}
+}
+
+
+// Name - Safari
+// Desc - Media target only Safari browser.
+@mixin iOS() {
+	@supports (-webkit-touch-callout: none) {
+		/* Specific to iOS devices */ 
+		@content;
+	}
+	@media not all and (min-resolution:.001dpcm) {
+		@supports (-webkit-appearance:none) {
+			/* Safari */
+			@content;
+		}
+	}
+}
+@mixin MAC() {
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+		/* Mac Safari (6.1 to 10.0) and Chrome */
+		@content;
+	}
+}
+
+
+
+
+// Name - Only Screen
+// Desc - Media Query for viewport
+@mixin screen($vw) {
+
+	@if ($vw == 'min769') { // for PC only
+		@media only screen and (min-width: 769px) {
+			@content;
+		}
+	}
+	@else if ($vw == '769-1000') {
+		@media only screen and (min-width: 769px) and (max-width: 1000px) {
+			@content;
+		}
+	}
+	@else if ($vw == '769-1170') {
+		@media only screen and (min-width: 769px) and (max-width: 1170px) {
+			@content;
+		}
+	}
+	@else if ($vw == '769-1280') {
+		@media only screen and (min-width: 769px) and (max-width: 1280px) {
+			@content;
+		}
+	}
+	@else if ($vw == '769-1400') {
+		@media only screen and (min-width: 769px) and (max-width: 1400px) {
+			@content;
+		}
+	}
+	@else if ($vw == 'max768') { // for SP only
+		@media only screen and (max-width: 768px) {
+			@content;
+		}
+	}
+	@else if ($vw == 'max640') { // 640px and below
+		@media only screen and (max-width: 640px) {
+			@content;
+		}
+	}
+	@else if ($vw == 'max600') { // 640px and below
+		@media only screen and (max-width: 600px) {
+			@content;
+		}
+	}
+	@else if ($vw == 'max425') { // 425px and below
+		@media only screen and (max-width: 425px) {
+			@content;
+		}
+	}
+
+}

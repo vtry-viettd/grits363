@@ -1,0 +1,195 @@
+<!Doctype html>
+<html amp lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=-100%, user-scalable=yes" />
+<meta name="format-detection" content="telephone=no">
+<title>テキストテキストテキストテキスト</title>
+<meta name="keywords" content="テキストテキスト" />
+<meta name="description" content="テキストテキスト" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<link rel="stylesheet" type="text/css" href="../css/style_sp.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+<link rel="stylesheet" href="bower_components/aos/dist/aos.css" />
+<!-- Google Analytics start -->
+<!-- Google Analytics end -->
+<style>
+	#mainContent {
+		min-height: 10000px;
+	}
+	.inner {
+		padding: 0;
+	}
+	.spaceTOP {
+		padding-top: 100vw;
+	}
+	.test {
+		background-color: #000;
+		color: #fff;
+		margin-bottom: 100px;
+		height: 100px;
+	}
+	.test01 {
+		border: 1px solid #333;
+	}
+	.test02 {
+		border: 1px solid #555;
+	}
+	.test03 {
+		border: 1px solid #777;
+	}
+</style>
+</head>
+
+<body class="under page-parent-child">
+<div class="wrapper">
+	
+    <div id="mainContent">
+		
+
+		<div class="inner">
+			<div class="spaceTOP"></div>
+
+			<div class="test test01 animatedScroll animate__animated animate__fadeInUp" data-as-offset='100' data-as-duration='1s' data-as-delay='0.3s'><p>11111111111</p></div>
+			<div class="test test01 animatedScroll animate__animated animate__fadeInUp"><p>22222222222</p></div>
+			<div class="test test03 animatedScroll"><p>3333333333</p></div>
+
+
+		</div>
+
+		
+    </div>
+	<!--End Main Content-->
+</div>
+<!-- End Wrapper -->
+	
+	
+<script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+<script>
+$(function(){
+	gritsOnScroll('.animatedScroll', 'active');
+})
+function gritsOnScroll(target, className, offset, duration, delay) {
+	try { /*adddlert("abcdxyz");*/ }
+	catch(err) { alert(err); }
+
+	offset = offset ? offset : 0;
+	duration = duration ? duration : false;
+	delay = delay ? delay : false;
+
+    // Get target coordinate
+	var target = $(target);
+	var targetTop = [];
+	var targetBtt = [];
+	function getPos() {
+		$.each(target, function(i, val){
+			// Get top position of target
+			let thisTargetTop = target.eq(i).offset().top;
+			if ( targetTop[i] == undefined ) {
+				targetTop.push(thisTargetTop);
+			}
+			else {
+				targetTop[i] = target.eq(i).offset().top;
+			}
+
+			// Get bottom position of target
+			let thisTargetBtt = target.eq(i).offset().top + target.eq(i).outerHeight();
+			if ( targetBtt[i] == undefined ) {
+				targetBtt.push(thisTargetBtt);
+			}
+			else {
+				targetBtt[i] = target.eq(i).offset().top + target.eq(i).outerHeight();
+			}
+		});
+	}
+
+
+    // Get inline value
+    var targetOffset = [];
+    var targetDuration = [];
+    var targetDelay = [];
+	function getInlineValue() {
+		$.each(target, function(){
+	    	let thisOffset = ($(this).data('as-offset') !== undefined) ? $(this).data('as-offset') : offset;
+	    	targetOffset.push(thisOffset);
+
+	    	let thisDuration = ($(this).data('as-duration') !== undefined) ? $(this).data('as-duration') : duration;
+	    	targetDuration.push(thisDuration);
+
+	    	let thisDelay = ($(this).data('as-delay') !== undefined) ? $(this).data('as-delay') : duration;
+	    	targetDelay.push(thisDelay);
+
+	    	$(this).removeAttr('data-as-offset data-as-duration data-as-delay');
+		});
+	}
+
+
+	// Get animation name
+	animationName = [];
+	target.each(function(i, ele) {
+	    let name = ($(ele).css('animation-name') != 'none') ? $(ele).css('animation-name') : null;
+	    $(ele).data('name', name || null);
+	    pushArray($(ele), animationName);
+	});
+	function pushArray(sel, arr) {
+		sel.each(function(i, ele){
+    		arr.push($(this).data('name'));
+		})
+	}
+
+
+	var vp = $(window);
+	var vpHeight;
+	function getViewportSize() {
+		vpHeight = vp.height();
+	}
+
+	getInlineValue();
+	getViewportSize();
+	getPos();
+	// console.log(targetOffset);
+	// console.log(targetDuration);
+	// console.log(targetDelay);
+	// console.log(animationName);
+	// console.log(targetTop);
+	// console.log(targetBtt);
+	$(window).on('resize', function(){
+		getViewportSize();
+		getPos();
+		// console.log(targetTop);
+		// console.log(targetBtt);
+	});
+
+	var y, endPoint;
+	$.each(target, function(i){
+		// if ( targetDuration[i] ) target.eq(i).css({'animation-duration' : targetDuration[i]});
+		// if ( targetDelay[i] ) target.eq(i).css({'animation-delay' : targetDelay[i]});
+		//if ( animationName[i] ) target.eq(i).css({'visibility' : 'hidden', 'animation-name' : 'none'});
+		$(window).on('scroll', function(){
+			y = $(this).scrollTop();
+			endPoint = y + vpHeight;
+			if ( !(target.eq(i).hasClass(className)) ) {
+				switch(true) {
+					case ( y < targetTop[i] && endPoint >= targetTop[i] ): // approach from the top of element
+						if ( (endPoint - targetTop[i]) >= targetOffset[i] ) { // offset
+							target.eq(i).addClass(className);
+							target.eq(i).find('p').text("approach from top: " + (targetTop[i] + targetOffset[i]));
+						}
+						break;
+					case (  y <= targetBtt[i] && endPoint > targetBtt[i] ): // approach from the bottom of element
+						target.eq(i).addClass(className);
+						target.eq(i).find('p').text("approach from bottom: " + targetBtt[i]);
+						break;
+					default:
+						break;
+				}
+			}
+		});
+	});
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+/* CSS Document */
+@import "_mixin";
+
+@media only screen and (max-width: 768px) {
+    .blurFixSP {
+        image-rendering: optimizeSpeed;
+        /* STOP SMOOTHING, GIVE ME SPEED  */
+        image-rendering: -moz-crisp-edges;
+        /* Firefox                        */
+        image-rendering: -o-crisp-edges;
+        /* Opera                          */
+        image-rendering: -webkit-optimize-contrast;
+        /* Chrome (and eventually Safari) */
+        image-rendering: pixelated;
+        /* Chrome */
+        image-rendering: optimize-contrast;
+        /* CSS3 Proposed                  */
+        -ms-interpolation-mode: nearest-neighbor;
+        /* IE8+                           */
+    }
+
+    :root {
+
+        --ttl_size: 24px;
+        --wrapper: 60px;
+    }
+}
+
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/
+/********************************
+Menu Toogle
+********************************/
+body:not(.ovh) {
+    .menu_toggle .inside {
+        pointer-events: none;
+    }
+}
+
+.menu_toggle {
+    background-color: #fff;
+    position: fixed;
+    top: var(--wrapper);
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: calc(100vh - var(--wrapper));
+    padding: 0px 0px 0px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s linear;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    ul {
+        li {
+            position: relative;
+            overflow: hidden;
+        }
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+
+
+    .inside {
+        -webkit-overflow-scrolling: touch;
+        /* Lets it scroll lazy */
+        transition: all 0.5s ease;
+        height: 100%;
+        overflow: auto;
+
+        .ft_link {
+            padding: 20px 10px 20px;
+
+            @include iOS() {
+                padding-bottom: 120px;
+            }
+
+        }
+    }
+
+    .lv2 {
+        ul {
+            background-color: rgba(107, 158, 178, 0.8);
+        }
+
+        li {
+            padding: 0 10px;
+
+            a,
+            p.title {
+                display: block;
+                position: relative;
+                color: #fff;
+                font-size: 13px;
+                padding: 10px 10px 10px 25px;
+                border-bottom: 1px dotted rgba(255, 255, 255, 0.7);
+            }
+
+            a::after {
+                content: "\203A";
+                display: block;
+                position: absolute;
+                top: 47%;
+                left: 10px;
+                transform: translateY(-50%);
+                font-size: 12px;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+#nav-icon {
+    width: 32px;
+    height: 27px;
+    position: relative;
+    margin: 0 auto 0px;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+
+    span {
+        background-color: #fff;
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: .25s ease-in-out;
+
+        &:nth-child(1) {
+            top: 3px;
+        }
+
+        &:nth-child(2),
+        &:nth-child(3) {
+            top: 11px;
+        }
+
+        &:nth-child(4) {
+            top: 19px;
+        }
+    }
+
+    &.open span {
+        &:nth-child(1) {
+            top: 11px;
+            width: 0%;
+            left: 50%;
+        }
+
+        &:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        &:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        &:nth-child(4) {
+            top: 11px;
+            width: 0%;
+            left: 50%;
+        }
+    }
+}
+
+.hamburger-btn {
+    background-color: var(--main-color2);
+    width: var(--wrapper);
+    height: var(--wrapper);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    cursor: pointer;
+    transition: all .3s;
+
+    @include screen('min769') {
+        &:hover {
+            background-color: var(--main-color);
+
+        }
+    }
+
+    .button-toggle {
+        position: relative;
+        width: 100%;
+        padding-top: calc(var(--wrapper)/2 - 12px);
+        height: 100%;
+        margin: 0 auto;
+        text-align: center;
+        color: inherit;
+
+        #menu_btn {
+            color: #fff;
+            font-size: 13px;
+            text-align: center;
+            line-height: 1;
+            letter-spacing: 0px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .ft_link {
+        .ttl {
+            font-size: calc(var(--ttl_size) + 0px);
+        }
+
+        .menu01 {
+            margin-bottom: 30px;
+        }
+
+    }
+}
+
+/* END Menu
+********************************/
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/
+/********************************
+General
+********************************/
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 87.5%;
+    }
+
+    figure {
+        text-align: center;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .TabContainer .TabPager li {
+        width: 33%;
+    }
+
+    .totop {
+        bottom: 55px;
+        right: 5px;
+
+        .icon {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+
+
+    .under .ud_map {
+        iframe {
+            height: 100%;
+        }
+    }
+
+    .fblock {
+        display: block;
+
+        &.true {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+        }
+    }
+
+    .under {
+        .topic_path {
+            padding-bottom: 10px;
+        }
+    }
+
+    .key {}
+
+    .txt_l,
+    .txt_r {
+        float: none;
+        width: auto;
+    }
+
+    .image_l,
+    .image_r {
+        float: none;
+        width: auto;
+        margin: 0 0 20px;
+        text-align: center;
+        max-width: none;
+    }
+
+    .heading01 {}
+
+    .heading02 {}
+
+    .subHeading01 {}
+
+    .subHeading02 {}
+
+    .btn-group {
+        font-size: 8.75px;
+
+        .btn {
+
+            &.style01,
+            &.style02 {
+                max-width: 280px;
+
+                a {
+
+
+                    &::after {}
+
+
+                }
+
+                &.md {
+                    min-width: 100px;
+
+                    a {
+                        min-height: 45px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    p {
+        margin-bottom: 13px;
+        line-height: 2;
+    }
+
+    a {
+        .tel_click {
+            &:hover {
+                opacity: 1;
+                color: inherit;
+            }
+        }
+    }
+
+    .slick-prev {
+        left: 0px;
+    }
+
+    .slick-next {
+        right: 0px;
+    }
+
+    .slick-arrow {
+        z-index: 1;
+        top: 15vw;
+    }
+}
+
+/* END General
+********************************/
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/
+/********************************
+Header & Footer
+********************************/
+@import '_SP_Header_Footer.scss';
+/* End Header & Footer
+********************************/
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/
+/********************************
+Index
+********************************/
+@import '_SP_Index.scss';
+// End Index Content
+/* END Index
+********************************/
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/
+/********************************
+Under
+********************************/
+@import '_SP_Under.scss';
+@import '_SP_Interview.scss';
+/* END Under
+********************************/
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*/

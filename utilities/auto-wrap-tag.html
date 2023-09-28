@@ -1,0 +1,182 @@
+<!Doctype html>
+<html amp lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=-100%, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no">
+    <title>Auto wrap &lt;TAG&gt; each line</title>
+    <meta name="keywords" content="テキストテキスト" />
+    <meta name="description" content="テキストテキスト" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body class="under page-parent-child">
+    <div class="wrapper">
+        <header>
+            <div class="header_top"></div>
+        </header>
+
+        <div class="key">
+            <div class="inner">
+                <div class="key_text">
+                    <h2>Auto wrap &lt;TAG&gt; each line</h2>
+                </div>
+            </div>
+        </div>
+
+        <div id="mainContent">
+
+
+        	<div class="inner">
+                <div class="pt50"></div>
+                <section>
+                    	<div class="radio-group" id="wrap-all-child">
+							<label>
+							    <div class="radio-bg"><input type="radio" name="wrap-all-child" id="wrap-default" value="wrap-default" checked="checked" /></div>
+						    	<p class="title">Unwrap all child.</p>
+							</label>
+							<label>
+							    <div class="radio-bg"><input type="radio" name="wrap-all-child" id="wrap-ul" value="wrap-ul" /></div>
+						    	<p class="title">Wrap tag&nbsp;<span class="bold">&lt;ul&gt;</span>&nbsp;all child.</p>
+							    <input type="text" name="css-ul" placeholder="Custom CSS goes here">
+							</label>
+							<label>
+							    <div class="radio-bg"><input type="radio" name="wrap-all-child" id="wrap-div" value="wrap-div" /></div>
+						    	<p class="title">Wrap tag&nbsp;<span class="bold">&lt;div&gt;</span>&nbsp;all child.</p>
+							    <input type="text" name="css-div" placeholder="Custom CSS goes here">
+							</label>
+						</div>
+
+                    	<div class="checkbox-group">
+							<label>
+							    <div class="checkbox-bg"><input type="checkbox" name="wrap-li" id="wrap-li" value="wrap-li" /></div>
+							    <p class="title">Wrap tag&nbsp;<span class="bold">&lt;li&gt;</span></p>
+							    <input type="text" name="css-li" placeholder="Custom CSS goes here">
+							</label>
+							<label>
+							    <div class="checkbox-bg"><input type="checkbox" name="wrap-ahref" id="wrap-ahref" value="wrap-ahref" /></div>
+							    <p class="title">Wrap tag&nbsp;<span class="bold">&lt;a&gt;</span></p>
+							    <input type="text" name="css-ahref" placeholder="Custom CSS goes here">
+							</label>
+						</div>
+
+                        <textarea name="InsertField" id="InputField" cols="30" rows="10" class="InputField"></textarea>
+                        <div class="btn-group">
+	                        <div class="button color01"><a href="#" id="doit">Just Do It (๑˃̵ᴗ˂̵)و </a></div>
+	                        <div class="button color02"><a href="#" id="clear">Clear (⌣_⌣”) </a></div>
+                        </div>
+                        <textarea name="InsertField" id="OutputField" cols="30" rows="10" class="OutputField" readonly></textarea>
+
+                </section>
+                <div class="pt100"></div>
+            </div>
+
+
+	    </div>
+		<!--End Main Content-->
+        <div class="totop"><div class="icon animated"></div></div>
+        <footer>
+        </footer>
+    </div>
+    <!-- End Wrapper -->
+	<script type="text/javascript" src="../js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#doit').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var text = $('#InputField').val();
+            var eachLine = text.split('\n');
+            var wrapStart = '';
+            var wrapEnd = '';
+            var addBefore = '';
+            var addAfter = '';
+            var css_ul = '';
+            var css_div = '';
+            var css_li = '';
+            var css_ahref = '';
+            var textIndent = '';
+            var output = '';
+            console.log('Total line: ' + eachLine.length);
+
+            // Set CSS
+            if ( !$('input[name="css-ul"]').val().length == 0 ) {
+            	css_ul = ' class="' + $('input[name="css-ul"]').val() + '"';
+            }
+            if ( !$('input[name="css-div"]').val().length == 0 ) {
+            	css_div = ' class="' + $('input[name="css-div"]').val() + '"';
+            }
+            if ( !$('input[name="css-li"]').val().length == 0 ) {
+            	css_li = ' class="' + $('input[name="css-li"]').val() + '"';
+            }
+            if ( !$('input[name="css-ahref"]').val().length == 0 ) {
+            	css_ahref = ' class="' + $('input[name="css-ahref"]').val() + '"';
+            }
+
+            // Set wrap-all-child
+            if ( $('input[name="wrap-all-child"]:checked').val() != "wrap-default" ) {
+            	textIndent = '    ';
+            }
+            switch ($('input[name="wrap-all-child"]:checked').val()) {
+            	case ('wrap-ul'):
+	            	wrapStart = '<ul' + css_ul + '>\n';
+	            	wrapEnd = '</ul>';
+	            	break;
+            	case ('wrap-div'):
+	            	wrapStart = '<div' + css_div + '>\n';
+	            	wrapEnd = '</div>';
+            		break;
+        		default:
+        			break;
+            }
+
+            // Set wrap-each-child
+            if ( $('#wrap-li').is(":checked") ) {
+            	addBefore += '<li' + css_li + '>';
+            }
+            if ( $('#wrap-ahref').is(":checked") ) {
+            	addBefore += '<a href="#"' + css_ahref + '>';
+            }
+
+            if ( $('#wrap-ahref').is(":checked") ) {
+            	addAfter += '</a>';
+            }
+            if ( $('#wrap-li').is(":checked") ) {
+            	addAfter += '</li>';
+            }
+
+            for (var i = 0, l = eachLine.length; i < l; i++) {
+            	eachLine[i] = $.trim(eachLine[i]);
+                switch (true) {
+                    case (eachLine[i].indexOf('・') > -1):
+                    	if ( eachLine[i].slice(0,1) == '・' ) {
+                    		eachLine[i] = eachLine[i].replace('・', '');
+                    	}
+                        output += textIndent + addBefore + eachLine[i] + addAfter +'\n';
+                        break;
+                    case (eachLine[i] == ''):
+                        break;
+                    default:
+                        output += textIndent + addBefore + eachLine[i] + addAfter + '\n';
+                        break;
+                }
+            }
+            $("#OutputField").val(wrapStart + output + wrapEnd);
+        });
+        $('#clear').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        	$('input[type="checkbox"]').prop('checked', false);
+        	$('input#wrap-default').prop('checked', true);
+        	$('input[type="text"]').val('');
+        	$('textarea').val('');
+        });
+    });
+    </script>
+</body>
+
+</html>
